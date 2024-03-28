@@ -1,0 +1,25 @@
+
+Les objets dépendants de la classe Jeu qui doivent être mockés dans un test pour automatiser la méthode jouer sont :
+
+Joueur: Pour simuler le comportement du joueur en termes de mises, débits et crédits.
+De: Pour simuler le lancer des dés et contrôler les résultats pour chaque test.
+Banque: Pour simuler le comportement de la banque en termes de crédits, débits et solvabilité.
+Il est nécessaire de mocker ces objets car le test de la méthode jouer doit se concentrer sur le comportement de la classe Jeu sans dépendre du comportement réel des objets Joueur, De et Banque.
+
+Scénarios (classes d’équivalence) pour tester jouer :
+
+Scénario 1 : Le jeu est fermé
+
+Vérifier que la méthode jouer lève une exception JeuFermeException lorsque le jeu est fermé.
+Scénario 2 : Le joueur est insolvable
+
+Vérifier que la méthode jouer lève une exception DebitImpossibleException lorsque le joueur est insolvable.
+Scénario 3 : La somme des lancers des dés ne vaut pas 7
+
+Vérifier que le joueur ne perd pas sa mise.
+Vérifier que la méthode crediter de la banque n'est pas appelée.
+Scénario 4 : La somme des lancers des dés vaut 7
+
+Vérifier que le joueur gagne le double de sa mise.
+Vérifier que la méthode crediter de la banque est appelée avec la somme du gain.
+Vérifier que le jeu se ferme si la banque devient insolvable après le paiement du gain.
